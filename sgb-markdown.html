@@ -9,7 +9,6 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 
 	<template>
 
-
 		<style>
 
 			:host {
@@ -52,7 +51,7 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 			
 		</style>
 		
-		<sgb-filedrop id="fileDropPanel" url={{uploadurl}} value={{fileDrop}}>
+		<sgb-filedrop id="fileDropPanel" url={{uploadurl}} >
 			<textarea id="inputBox" value='{{value}}' placeholder="{{placeholder}}"></textarea>
 		</sgb-filedrop>
 
@@ -70,19 +69,77 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 	    	options: {},		
 	      	ready: function() {
 
-				// event listener on fileDrop
-				this.$.fileDropPanel.addEventListener('fileDrop', this.onFileDrop.bind(this));		
+				this.$.fileDropPanel.addEventListener('fileUploading', this.onFileUploading.bind(this));		
+				this.$.fileDropPanel.addEventListener('fileUploaded', this.onFileUploaded.bind(this));		
+				this.$.fileDropPanel.addEventListener('fileUploadError', this.onFileUploadError.bind(this));		
 	      	},
-	      
-	      	onFileDrop: function(e) {
+ 			onFileUploading: function(e) {
+
+				e.stopPropagation();
+				var xFile = e.detail;
+				this.addUploadingMark( xFile.name );
+	      	},	      	
+	      	onFileUploaded: function(e) {
+
+				e.stopPropagation();
+				var xFile = e.detail;
+				this.replaceUploadingMark( xFile.name, xFile);
+	      	},	      	
+	      	onFileUploadError: function(e) {
+
+				var xFile = e.detail;
+	      		this.removeUploadingMark( xFile.name );
+	      	},
+	      	addUploadingMark: function(id) {
 
 				var selectionStart = this.$.inputBox.selectionStart; 
 				var selectionEnd = this.$.inputBox.selectionEnd; 
 
 				var str1 = this.value.substring(0,selectionStart);
 				var str2 = this.value.substring(selectionEnd);
-				this.value = str1 + e.detail.mediaUrl + str2;
-	      	}    	
+
+				var markdownLink = "![Uploading " + id + " . . .]()";
+
+				// Insert mark
+				this.value = str1 + markdownLink + str2;
+	      	},	    	
+	      	replaceUploadingMark: function(id, xFile) {
+
+				// ![Alt text](/path/to/img.jpg)
+				// ![Alt text](/path/to/img.jpg "Optional title")
+
+ 				var matchMarkdownLink = "![Uploading "+ xFile.name +" . . .](";
+				var markdownLink = "!["+ xFile.name + "](" + xFile.url + ")";
+
+ 				var indexStart = this.value.indexOf(matchMarkdownLink);
+ 				var indexEnd = this.value.indexOf(")",indexStart + matchMarkdownLink.length);
+
+ 				if( indexStart != -1 && indexEnd != -1) {
+
+					var str1 = this.value.substring(0,indexStart);
+					var str2 = this.value.substring(indexEnd + 1);
+					this.value = str1 + markdownLink + str2;
+ 				}
+ 				else {
+
+ 					// Warning, we can not find the place to insert our image.
+ 					// The image will be inserted at the end of the document.
+ 					this.value = this.value + markdownLink;
+ 				}
+
+	      	},	
+	      	removeUploadingMark: function(id) {
+
+ 				var matchMarkdownLink = "![Uploading "+ id +" . . .](";
+ 				var indexStart = this.value.indexOf(matchMarkdownLink);
+ 				var indexEnd = this.value.indexOf(")",indexStart + matchMarkdownLink.length);
+
+ 				if( indexStart != -1 && indexEnd != -1) {
+					var str1 = this.value.substring(0,indexStart);
+					var str2 = this.value.substring(indexEnd + 1);
+					this.value = str1 + str2;
+ 				}
+	      	},	    	
 	    });
 	</script>
 </polymer-element>
