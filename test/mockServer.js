@@ -10,7 +10,8 @@
 				"Content - Type" : "application / json",
 				"x-file" : JSON.stringify( { 
 					type: xFile.type, 
-					name: xFile.name 
+					name: xFile.name, 
+					url: "/storage/server/files/"+xFile.name
 				} )
 			}, 
 			JSON.stringify([{ id: 1, text: "Provide examples", done: true }])
