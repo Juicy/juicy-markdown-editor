@@ -1,7 +1,7 @@
 {
-  "name": "sgb-markdown",
+  "name": "juicy-markdown",
   "version": "0.0.0",
-  "homepage": "https://github.com/Smorgasbord-Development/sgb-markdown",
+  "homepage": "https://github.com/Smorgasbord-Development/juicy-markdown",
   "authors": [
     "andwah <anders.wahlgren@societyobjects.com>"
   ],
@@ -12,11 +12,13 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "index.html",
+    "preview.png"
   ],
   "dependencies": {
-    "sgb-filedrop": "*",
-    "polymer": "polymer/polymer#~0.3.1",
-    "sgb-markdownview": "*"
+    "polymer": "polymer/polymer#~0.3.4",
+    "juicy-markdownview": "*",
+    "juicy-filedrop": "*"
   }
 }

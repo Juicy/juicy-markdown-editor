@@ -1,4 +1,4 @@
-# &lt;sgb-markdown&gt;
+# &lt;juicy-markdown&gt;
 
 GitHub Flavored Markdown (GFM) editor with filedrop and paste functionality
 
@@ -7,7 +7,7 @@ GitHub Flavored Markdown (GFM) editor with filedrop and paste functionality
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install sgb-markdown --save
+$ bower install juicy-markdown --save
 ```
 
-Or [download as ZIP](https://github.com/Smorgasbord-Development/sgb-markdown/archive/master.zip).
+Or [download as ZIP](https://github.com/Juicy/juicy-markdown/archive/master.zip).

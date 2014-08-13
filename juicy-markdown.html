@@ -2,10 +2,10 @@
 Copyright 2014 Smörgåsbord Development. All rights reserved.
 -->
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../sgb-filedrop/sgb-filedrop.html"> 
-<link rel="import" href="../sgb-markdownview/sgb-markdownview.html"> 
+<link rel="import" href="../juicy-filedrop/juicy-filedrop.html"> 
+<link rel="import" href="../juicy-markdownview/juicy-markdownview.html"> 
 
-<polymer-element name="sgb-markdown" attributes="value placeholder uploadurl">
+<polymer-element name="juicy-markdown" attributes="value placeholder uploadurl">
 
 	<template>
 
@@ -51,18 +51,18 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 			
 		</style>
 		
-		<sgb-filedrop id="fileDropPanel" url={{uploadurl}} >
+		<juicy-filedrop id="fileDropPanel" url={{uploadurl}} >
 			<textarea id="inputBox" value='{{value}}' placeholder="{{placeholder}}"></textarea>
-		</sgb-filedrop>
+		</juicy-filedrop>
 
-		<sgb-markdownview id="previewPanel" value={{value}}></sgb-markdownview>
+		<juicy-markdownview id="previewPanel" value={{value}}></juicy-markdownview>
 	</template>
 
 	<script>
 
 	    "use strict";
 
-	    Polymer('sgb-markdown', {
+	    Polymer('juicy-markdown', {
 	    	uploadurl: "",
 	    	placeholder: "",
 	    	value: "",
