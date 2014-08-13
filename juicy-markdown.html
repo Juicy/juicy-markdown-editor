@@ -5,7 +5,7 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 <link rel="import" href="../juicy-filedrop/juicy-filedrop.html"> 
 <link rel="import" href="../juicy-markdownview/juicy-markdownview.html"> 
 
-<polymer-element name="juicy-markdown" attributes="value placeholder uploadurl">
+<polymer-element name="juicy-markdown" attributes="value placeholder uploadurl ghcss customheader">
 
 	<template>
 
@@ -51,11 +51,10 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 			
 		</style>
 		
-		<juicy-filedrop id="fileDropPanel" url={{uploadurl}} >
-			<textarea id="inputBox" value='{{value}}' placeholder="{{placeholder}}"></textarea>
+		<juicy-filedrop id="fileDropPanel" url="{{uploadurl}}" customheader="{{customheader}}">
+			<textarea id="inputBox" value="{{value}}" placeholder="{{placeholder}}"></textarea>
 		</juicy-filedrop>
-
-		<juicy-markdownview id="previewPanel" value={{value}}></juicy-markdownview>
+		<juicy-markdownview id="previewPanel" value="{{value}}" ghcss="{{ghcss}}"></juicy-markdownview>
 	</template>
 
 	<script>
@@ -66,7 +65,9 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 	    	uploadurl: "",
 	    	placeholder: "",
 	    	value: "",
-	    	options: {},		
+	    	options: {},
+	    	ghcss: false,
+	    	customheader: null,	
 	      	ready: function() {
 
 				this.$.fileDropPanel.addEventListener('fileUploading', this.onFileUploading.bind(this));		

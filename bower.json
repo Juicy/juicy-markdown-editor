@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "homepage": "https://github.com/Smorgasbord-Development/juicy-markdown",
   "authors": [
-    "andwah <anders.wahlgren@societyobjects.com>"
+    "andwah <anders.wahlgren@societyobjects.com>",
+    "Tomek Wytrebowicz <tomalecpub@gmail.com>"
   ],
   "description": "Markdown with file drop",
   "license": "MIT",

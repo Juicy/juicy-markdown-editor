@@ -1,6 +1,6 @@
 # &lt;juicy-markdown&gt;
 
-> Polymer Element with GitHub Flavored Markdown (GFM) editor with filedrop and paste functionality
+> Polymer Element with GitHub Flavored Markdown (GFM) editor with file drop and paste functionality
 
 ## Demo
 ![Preview](preview.png?raw=true "Preview")
@@ -41,7 +41,9 @@ Or [download as ZIP](https://github.com/Juicy/juicy-markdown/archive/master.zip)
 
 Attribute      | Options  | Default  | Description
 ---            | ---      | ---      | ---
-`uploadurl`    | *string* | ``       | URL to files storage server, see [`<juicy-filedrop url>`](https://github.com/Juicy/juicy-filedrop#options)
+`uploadurl`    | *string* | ``       | URL to files storage server, see [`<juicy-filedrop url>`](https://github.com/Juicy/juicy-filedrop#options).
+`customheader` | *string* | `x-file` | Name for custom header that contains JSON with file meta data, see [`<juicy-filedrop customheader>`](https://github.com/Juicy/juicy-filedrop#options).
+`ghcss`   | *boolean* | `false` | Should ghithub-markdown.css be imported? see [`<juicy-markdownview ghcss>`](https://github.com/Juicy/juicy-markdownview#options).
 `value`        | *string* | ``       | Markdown to render.
 `placeholder`  | *string* | ``       | Input placeholder.
 

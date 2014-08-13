@@ -2,8 +2,7 @@
 	var server = sinon.fakeServer.create();
 	server.autoRespond = true;
 	server.respondWith("/storage/server/path", function(xhr) {
-		console.info("Mock server caught `/storage/server/path` request,"+
-			" and now is adding timestamp to file name")
+		console.info("Mock server caught `/storage/server/path` request");
 		var xFile = JSON.parse(xhr.requestHeaders['x-file']);
 		xhr.respond(
 			200, 
