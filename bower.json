@@ -1,12 +1,12 @@
 {
-  "name": "juicy-markdown",
+  "name": "juicy-markdown-view",
   "version": "0.0.0",
-  "homepage": "https://github.com/Smorgasbord-Development/juicy-markdown",
+  "homepage": "https://github.com/Juicy/juicy-markdown-view",
   "authors": [
     "andwah <anders.wahlgren@societyobjects.com>",
     "Tomek Wytrebowicz <tomalecpub@gmail.com>"
   ],
-  "description": "Markdown with file drop",
+  "description": "Markdown editor with file drop",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "polymer": "polymer/polymer#~0.3.4",
-    "juicy-markdownview": "*",
+    "juicy-markdown": "*",
     "juicy-filedrop": "*"
   }
 }

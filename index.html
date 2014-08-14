@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>&lt;juicy-markdown&gt;</title>
+    <title>&lt;juicy-markdown-editor&gt;</title>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/github-markdown-css/0.2.0/github-markdown.min.css">
     <style>
-        juicy-markdown{
+        juicy-markdown-editor{
             width: calc( 100% - 2em );
             margin: 1em;
             border: 1px solid black;
@@ -18,24 +18,24 @@
     <script src="//cdn.jsdelivr.net/polymer.platform/0.3.4/platform.js"></script>
 
     <!-- Importing Custom Elements -->
-    <link rel="import" href="juicy-markdown.html">
+    <link rel="import" href="juicy-markdown-editor.html">
     <!-- Loading mock file host/server - needed only for demo -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/sinon.js/1.7.3/sinon.js"></script>
     <script src="test/mockServer.js"></script>
 </head>
 <body class="markdown-body">
-<a href="https://github.com/Juicy/juicy-markdown"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/Juicy/juicy-markdown-editor"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 <h1>
-    &lt;juicy-markdown&gt;
-    <iframe src="http://ghbtns.com/github-btn.html?user=juicy&repo=juicy-markdown&type=watch&count=true&size=medium"
+    &lt;juicy-markdown-editor&gt;
+    <iframe src="http://ghbtns.com/github-btn.html?user=juicy&repo=juicy-markdown-editor&type=watch&count=true&size=medium"
     allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
 </h1>
 
     <!-- Using Custom Elements -->
-    <juicy-markdown 
+    <juicy-markdown-editor 
         uploadurl="/storage/server/path"
         ghcss
-        ></juicy-markdown>
+        ></juicy-markdown-editor>
 
 </body>
 </html>

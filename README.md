@@ -1,21 +1,21 @@
-# &lt;juicy-markdown&gt;
+# &lt;juicy-markdown-editor&gt;
 
 > Polymer Element with GitHub Flavored Markdown (GFM) editor with file drop and paste functionality
 
 ## Demo
 ![Preview](preview.png?raw=true "Preview")
 
-[Check it live!](http://Juicy.github.io/juicy-markdown)
+[Check it live!](http://Juicy.github.io/juicy-markdown-editor)
 
 ## Install
 
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install juicy-markdown --save
+$ bower install juicy-markdown-editor --save
 ```
 
-Or [download as ZIP](https://github.com/Juicy/juicy-markdown/archive/master.zip).
+Or [download as ZIP](https://github.com/Juicy/juicy-markdown-editor/archive/gh-pages.zip).
 
 ## Usage
 
@@ -28,7 +28,7 @@ Or [download as ZIP](https://github.com/Juicy/juicy-markdown/archive/master.zip)
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="bower_components/juicy-markdown/juicy-markdown.html">
+    <link rel="import" href="bower_components/juicy-markdown-editor/juicy-markdown-editor.html">
     ```
 
 3. Start using it!
@@ -43,7 +43,7 @@ Attribute      | Options  | Default  | Description
 ---            | ---      | ---      | ---
 `uploadurl`    | *string* | ``       | URL to files storage server, see [`<juicy-filedrop url>`](https://github.com/Juicy/juicy-filedrop#options).
 `customheader` | *string* | `x-file` | Name for custom header that contains JSON with file meta data, see [`<juicy-filedrop customheader>`](https://github.com/Juicy/juicy-filedrop#options).
-`ghcss`   | *boolean* | `false` | Should ghithub-markdown.css be imported? see [`<juicy-markdownview ghcss>`](https://github.com/Juicy/juicy-markdownview#options).
+`ghcss`   | *boolean* | `false` | Should ghithub-markdown.css be imported? see [`<juicy-markdown ghcss>`](https://github.com/Juicy/juicy-markdown#options).
 `value`        | *string* | ``       | Markdown to render.
 `placeholder`  | *string* | ``       | Input placeholder.
 
@@ -58,4 +58,4 @@ Attribute      | Options  | Default  | Description
 
 ## History
 
-For detailed changelog, check [Releases](https://github.com/Juicy/juicy-markdown/releases).
+For detailed changelog, check [Releases](https://github.com/Juicy/juicy-markdown-editor/releases).
