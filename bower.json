@@ -1,13 +1,14 @@
 {
   "name": "juicy-markdown-view",
-  "version": "0.0.0",
-  "homepage": "https://github.com/Juicy/juicy-markdown-view",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Juicy/juicy-markdown-editor",
   "authors": [
     "andwah <anders.wahlgren@societyobjects.com>",
     "Tomek Wytrebowicz <tomalecpub@gmail.com>"
   ],
-  "description": "Markdown editor with file drop",
+  "description": "Polymer Element with GitHub Flavored Markdown (GFM) editor with file drop and paste functionality",
   "license": "MIT",
+  "main": "juicy-markdown-editor.html",
   "ignore": [
     "**/.*",
     "node_modules",
