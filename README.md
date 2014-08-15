@@ -47,6 +47,11 @@ Attribute      | Options  | Default  | Description
 `value`        | *string* | ``       | Markdown to render.
 `placeholder`  | *string* | ``       | Input placeholder.
 
+## See also
+
+ - [`<juicy-markdown>`](https://github.com/Juicy/juicy-markdown) - Markdown viewer
+ - [`<juicy-filedrop>`](https://github.com/Juicy/juicy-filedrop) - just file drop panel
+ - [`<juicy-markdown-tabbededitor>`](https://github.com/Juicy/juicy-markdown-tabbededitor) - Markdown editor, with tabs like the one at GitHub.com
 
 ## Contributing
 
