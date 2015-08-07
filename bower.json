@@ -26,7 +26,7 @@
     "preview.png"
   ],
   "dependencies": {
-    "polymer": "polymer/polymer#~0.3.4",
+    "polymer": "polymer/polymer#~1.0.0",
     "juicy-markdown": "*",
     "juicy-filedrop": "*"
   }

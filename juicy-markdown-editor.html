@@ -2,145 +2,139 @@
 Copyright 2014 Smörgåsbord Development. All rights reserved.
 -->
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../juicy-filedrop/juicy-filedrop.html"> 
-<link rel="import" href="../juicy-markdown/juicy-markdown.html"> 
+<link rel="import" href="../juicy-filedrop/juicy-filedrop.html">
+<link rel="import" href="../juicy-markdown/juicy-markdown.html">
 
-<polymer-element name="juicy-markdown-editor" attributes="value placeholder uploadurl ghcss customheader">
-
+<dom-module id="juicy-markdown-editor">
+	<style>
+		:host {
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-ms-flex-direction: row;
+			-webkit-flex-direction: row;
+			flex-direction: row;
+		}
+		#fileDropPanel {
+		   -webkit-flex: 1;
+	        flex: 1;
+			-ms-flex: 1;
+		}
+		#previewPanel {
+		   -webkit-flex: 1;
+	        flex: 1;
+    		-ms-flex: 1;
+    		padding: 10px;
+			overflow:auto;
+    		border-left: 1px solid #dddddd;	/* Devider */
+		}
+		#fileDropPanel textarea {
+			width: 100%;
+			border: 0px;
+			margin: 0px;
+			padding: 10px;
+			resize: none;
+			background-color: transparent;
+		}
+	</style>
 	<template>
-
-		<style>
-
-			:host {
-
-				display: -moz-box;
-				display: -ms-flexbox;
-				display: -webkit-flex;
-				display: flex;
-				-ms-flex-direction: row;
-				-webkit-flex-direction: row;
-				flex-direction: row;			
-			}
-
-			#fileDropPanel {
-
-			   -webkit-flex: 1;
-		        flex: 1;
-        		-ms-flex: 1;
-			}			
-	
-			#previewPanel {
-
-			   -webkit-flex: 1;
-		        flex: 1;
-        		-ms-flex: 1;
-        		padding: 10px;
-				overflow:auto;
-        		border-left: 1px solid #dddddd;	/* Devider */
-			}
-
-			#fileDropPanel textarea {
-				
-				width: 100%;
-				border: 0px;
-				margin: 0px;
-				padding: 10px;
-				resize: none;
-				background-color: transparent;
-			}			
-			
-		</style>
-		
 		<juicy-filedrop id="fileDropPanel" url="{{uploadurl}}" customheader="{{customheader}}">
-			<textarea id="inputBox" value="{{value}}" placeholder="{{placeholder}}"></textarea>
+			<textarea id="inputBox" value="{{value::input}}" placeholder="{{placeholder}}"></textarea>
 		</juicy-filedrop>
 		<juicy-markdown id="previewPanel" value="{{value}}" ghcss="{{ghcss}}"></juicy-markdown>
 	</template>
-
-	<script>
-
-	    "use strict";
-
-	    Polymer('juicy-markdown-editor', {
-	    	uploadurl: "",
-	    	placeholder: "",
-	    	value: "",
-	    	options: {},
-	    	ghcss: false,
-	    	customheader: null,	
-	      	ready: function() {
-
-				this.$.fileDropPanel.addEventListener('fileUploading', this.onFileUploading.bind(this));		
-				this.$.fileDropPanel.addEventListener('fileUploaded', this.onFileUploaded.bind(this));		
-				this.$.fileDropPanel.addEventListener('fileUploadError', this.onFileUploadError.bind(this));		
-	      	},
- 			onFileUploading: function(e) {
-
-				e.stopPropagation();
-				var xFile = e.detail;
-				this.addUploadingMark( xFile.name );
-	      	},	      	
-	      	onFileUploaded: function(e) {
-
-				e.stopPropagation();
-				var xFile = e.detail;
-				this.replaceUploadingMark( xFile.name, xFile);
-	      	},	      	
-	      	onFileUploadError: function(e) {
-
-				var xFile = e.detail;
-	      		this.removeUploadingMark( xFile.name );
-	      	},
-	      	addUploadingMark: function(id) {
-
-				var selectionStart = this.$.inputBox.selectionStart; 
-				var selectionEnd = this.$.inputBox.selectionEnd; 
-
-				var str1 = this.value.substring(0,selectionStart);
-				var str2 = this.value.substring(selectionEnd);
-
-				var markdownLink = "![Uploading " + id + " . . .]()";
-
-				// Insert mark
-				this.value = str1 + markdownLink + str2;
-	      	},	    	
-	      	replaceUploadingMark: function(id, xFile) {
-
-				// ![Alt text](/path/to/img.jpg)
-				// ![Alt text](/path/to/img.jpg "Optional title")
-
- 				var matchMarkdownLink = "![Uploading "+ xFile.name +" . . .](";
-				var markdownLink = "!["+ xFile.name + "](" + xFile.url + ")";
-
- 				var indexStart = this.value.indexOf(matchMarkdownLink);
- 				var indexEnd = this.value.indexOf(")",indexStart + matchMarkdownLink.length);
-
- 				if( indexStart != -1 && indexEnd != -1) {
-
-					var str1 = this.value.substring(0,indexStart);
-					var str2 = this.value.substring(indexEnd + 1);
-					this.value = str1 + markdownLink + str2;
- 				}
- 				else {
-
- 					// Warning, we can not find the place to insert our image.
- 					// The image will be inserted at the end of the document.
- 					this.value = this.value + markdownLink;
- 				}
-
-	      	},	
-	      	removeUploadingMark: function(id) {
-
- 				var matchMarkdownLink = "![Uploading "+ id +" . . .](";
- 				var indexStart = this.value.indexOf(matchMarkdownLink);
- 				var indexEnd = this.value.indexOf(")",indexStart + matchMarkdownLink.length);
-
- 				if( indexStart != -1 && indexEnd != -1) {
-					var str1 = this.value.substring(0,indexStart);
-					var str2 = this.value.substring(indexEnd + 1);
-					this.value = str1 + str2;
- 				}
-	      	},	    	
-	    });
-	</script>
-</polymer-element>
+</dom-module>
+<script>
+	'use strict';
+	Polymer({
+	    is: 'juicy-markdown-editor',
+	    properties: {
+	        customheader: {
+	            value: null,
+	            notify: true
+	        },
+	        ghcss: {
+	            type: Boolean,
+	            value: false,
+	            notify: true
+	        },
+	        options: {
+	            type: Object,
+	            value: function() {
+	                return {};
+	            }
+	        },
+	        placeholder: {
+	            type: String,
+	            value: '',
+	            notify: true
+	        },
+	        uploadurl: {
+	            type: String,
+	            value: '',
+	            notify: true
+	        },
+	        value: {
+	            type: String,
+	            value: '',
+	            notify: true
+	        }
+	    },
+	    ready: function() {
+	        this.$.fileDropPanel.addEventListener('fileUploading', this.onFileUploading.bind(this));
+	        this.$.fileDropPanel.addEventListener('fileUploaded', this.onFileUploaded.bind(this));
+	        this.$.fileDropPanel.addEventListener('fileUploadError', this.onFileUploadError.bind(this));
+	    },
+	    onFileUploading: function(e) {
+	        e.stopPropagation();
+	        var xFile = e.detail;
+	        this.addUploadingMark(xFile.name);
+	    },
+	    onFileUploaded: function(e) {
+	        e.stopPropagation();
+	        var xFile = e.detail;
+	        this.replaceUploadingMark(xFile.name, xFile);
+	    },
+	    onFileUploadError: function(e) {
+	        var xFile = e.detail;
+	        this.removeUploadingMark(xFile.name);
+	    },
+	    addUploadingMark: function(id) {
+	        var selectionStart = this.$.inputBox.selectionStart;
+	        var selectionEnd = this.$.inputBox.selectionEnd;
+	        var str1 = this.value.substring(0, selectionStart);
+	        var str2 = this.value.substring(selectionEnd);
+	        var markdownLink = '![Uploading ' + id + ' . . .]()'; // Insert mark
+	        // Insert mark
+	        this.value = str1 + markdownLink + str2;
+	    },
+	    replaceUploadingMark: function(id, xFile) {
+	        // ![Alt text](/path/to/img.jpg)
+	        // ![Alt text](/path/to/img.jpg "Optional title")
+	        var matchMarkdownLink = '![Uploading ' + xFile.name + ' . . .](';
+	        var markdownLink = '![' + xFile.name + '](' + xFile.url + ')';
+	        var indexStart = this.value.indexOf(matchMarkdownLink);
+	        var indexEnd = this.value.indexOf(')', indexStart + matchMarkdownLink.length);
+	        if (indexStart != -1 && indexEnd != -1) {
+	            var str1 = this.value.substring(0, indexStart);
+	            var str2 = this.value.substring(indexEnd + 1);
+	            this.value = str1 + markdownLink + str2;
+	        } else {
+	            // Warning, we can not find the place to insert our image.
+	            // The image will be inserted at the end of the document.
+	            this.value = this.value + markdownLink;
+	        }
+	    },
+	    removeUploadingMark: function(id) {
+	        var matchMarkdownLink = '![Uploading ' + id + ' . . .](';
+	        var indexStart = this.value.indexOf(matchMarkdownLink);
+	        var indexEnd = this.value.indexOf(')', indexStart + matchMarkdownLink.length);
+	        if (indexStart != -1 && indexEnd != -1) {
+	            var str1 = this.value.substring(0, indexStart);
+	            var str2 = this.value.substring(indexEnd + 1);
+	            this.value = str1 + str2;
+	        }
+	    }
+	});
+</script>

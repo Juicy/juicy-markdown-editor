@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>&lt;juicy-markdown-editor&gt;</title>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/github-markdown-css/0.2.0/github-markdown.min.css">
+    <link rel="stylesheet" href="../github-markdown-css/github-markdown.css">
     <style>
         juicy-markdown-editor{
             width: calc( 100% - 2em );
@@ -15,7 +15,7 @@
     </style>
 
     <!-- Importing Web Component's Polyfill -->
-    <script src="//cdn.jsdelivr.net/polymer.platform/0.3.4/platform.js"></script>
+    <script src="../webcomponentsjs/webcomponents.js"></script>
 
     <!-- Importing Custom Elements -->
     <link rel="import" href="juicy-markdown-editor.html">
@@ -32,7 +32,7 @@
 </h1>
 
     <!-- Using Custom Elements -->
-    <juicy-markdown-editor 
+    <juicy-markdown-editor
         uploadurl="/storage/server/path"
         ghcss
         ></juicy-markdown-editor>
