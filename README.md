@@ -64,3 +64,7 @@ Attribute      | Options  | Default  | Description
 ## History
 
 For detailed changelog, check [Releases](https://github.com/Juicy/juicy-markdown-editor/releases).
+
+## License
+
+MIT
