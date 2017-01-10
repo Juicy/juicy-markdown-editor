@@ -15,7 +15,7 @@ Install the component using [Bower](http://bower.io/):
 $ bower install juicy-markdown-editor --save
 ```
 
-Or [download as ZIP](https://github.com/Juicy/juicy-markdown-editor/archive/gh-pages.zip).
+Or [download as ZIP](https://github.com/Juicy/juicy-markdown-editor/archive/master.zip).
 
 ## Usage
 
