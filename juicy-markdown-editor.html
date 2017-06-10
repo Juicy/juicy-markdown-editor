@@ -47,8 +47,8 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 </dom-module>
 <script>
 	'use strict';
-	Polymer({
-	    is: 'juicy-markdown-editor',
+	
+	var markdownEditorBehavior = {
 	    properties: {
 	        customheader: {
 	            value: null,
@@ -80,11 +80,6 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 	            value: '',
 	            notify: true
 	        }
-	    },
-	    ready: function() {
-	        this.$.fileDropPanel.addEventListener('fileUploading', this.onFileUploading.bind(this));
-	        this.$.fileDropPanel.addEventListener('fileUploaded', this.onFileUploaded.bind(this));
-	        this.$.fileDropPanel.addEventListener('fileUploadError', this.onFileUploadError.bind(this));
 	    },
 	    onFileUploading: function(e) {
 	        e.stopPropagation();
@@ -135,6 +130,16 @@ Copyright 2014 Smörgåsbord Development. All rights reserved.
 	            var str2 = this.value.substring(indexEnd + 1);
 	            this.value = str1 + str2;
 	        }
+	    }
+	}
+	
+	Polymer({
+		is: 'juicy-markdown-editor',
+		behaviors:[markdownEditorBehavior],
+		ready: function() {
+	        this.$.fileDropPanel.addEventListener('fileUploading', this.onFileUploading.bind(this));
+	        this.$.fileDropPanel.addEventListener('fileUploaded', this.onFileUploaded.bind(this));
+	        this.$.fileDropPanel.addEventListener('fileUploadError', this.onFileUploadError.bind(this));
 	    }
 	});
 </script>
