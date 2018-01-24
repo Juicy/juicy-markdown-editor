@@ -1,3 +1,5 @@
+:warning: This element is **DEPRECATED**. We recommend to use [marked-element](https://github.com/PolymerElements/marked-element) and a textarea or [juicy-ace-editor](https://github.com/Juicy/juicy-ace-editor) in new projects.
+
 # &lt;juicy-markdown-editor&gt;
 
 > Polymer Element with GitHub Flavored Markdown (GFM) editor with file drop and paste functionality
